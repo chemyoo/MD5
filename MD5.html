@@ -3,16 +3,27 @@
   <head>
       <meta charset="utf-8">
       <title>MD5在线计算</title>
+      <style>
+      	.progressbar { color: green; border: 0px; background-color: powderblue;} /**  IE、火狐初始化背景色*/
+      	progress { -webkit-appearance: none; }
+      	progress::-webkit-progress-inner-element { background-color: powderblue;}
+		progress::-moz-progress-bar { background-color: green;}  /**  火狐表示已完成背景色*/
+		progress::-webkit-progress-bar { background-color: powderblue;}  /** Chrome初始化背景色*/
+		progress::-webkit-progress-value  { background-color: green;}     /** Chrome表示已完成背景色*/
+		progress::-ms-fill { background-color: powderblue;}     
+      </style>
+
   </head> 
   <body>
          <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
             <div>
                 <div>                                                             
                     添加文件计算MD5值：
-                    <input type="file" name="" id="fileinput">                                                                     
+                    <input type="file" name="file" id="fileinput">                                                                     
                 </div>
 
                 <progress class='progressbar' value="0" max="100" style='width:500px;margin-top:20px'></progress>
+                <span id="percent" style="color: green;"></span>
                 <div style='margin-top:20px'>
                     <span id="handler_info" ></span>
                 </div>
@@ -41,6 +52,7 @@
                 }
                 var md5_progress = Math.floor((currentChunk / chunks) * 100);
 
+				document.getElementById("percent").innerText = md5_progress + "%";
                 console.log(file.name + "  正在处理，请稍等," + "已完成" + md5_progress + "%");
                 var handler_info = document.getElementById("handler_info");
                 var progressbar = document.getElementsByClassName("progressbar")[0];
