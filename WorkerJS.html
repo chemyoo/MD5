@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script type="text/javascript" src="jquery.min.js" ></script>-->
+		<script type="text/javascript" src="XhrObjectUtil.js" ></script>
+	</head>
+	<body>
+		<script>
+			// index.html 中的 main.js
+//		var worker = new Worker('worker.js');
+//		
+//		worker.addEventListener('message', function(e) {
+//		  console.log('Worker said: ', e.data);
+//		}, false);
+//		
+//		worker.postMessage('Hello World'); // Send data to our 
+		// Worker.js内容
+		XhrUtil.sendRequest("http://localhost:8080/resdata-nlp/wordAnalysis.do",{text:'你好呀'},'post',function(data){
+			alert(JSON.stringify(data))}
+		);
+        var json = JSON.parse("[[]]");
+        console.log(json);
+        
+        var total = 10; // 总金额
+        var num = 10; //红包个数
+        var min = 0.01;
+
+        var safe_total;
+        var money;
+        for(var i = 1; i < num; i++){
+        	safe_total = (total - (num - i + 1) * min).toFixed(2);// 最少保留多少余额的可随机金额
+        	money = (Math.random() * (safe_total/(num - i)) + min).toFixed(2);// 几率几乎平均的随机
+        	total = (total - money).toFixed(2);
+        	console.log("第"+i+"个红包："+money+"元，余额："+total+"元。")
+        }
+        console.log("第"+num+"个红包："+total+"元，余额："+0+"元。")
+		</script>
+	</body>
+</html>
