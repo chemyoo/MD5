@@ -1,0 +1,8 @@
+git add .
+git commit -m "some str"
+git push
+
+¼ò»¯
+
+git commit -am "some str"
+git push
