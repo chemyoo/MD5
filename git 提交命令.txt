@@ -1,8 +1,9 @@
-git add .
-git commit -m "some str"
+git add '文件名' tab键补全名字
+git commit -m "some str" 
 git push
 
-简化
+还可以
 
-git commit -am "some str"
+git add '文件名' tab键补全名字
+git commit -a -m "some str" 
 git push
