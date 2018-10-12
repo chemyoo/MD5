@@ -6,6 +6,9 @@
 		<script type="text/javascript" src="XhrObjectUtil.js" ></script>
 	</head>
 	<body>
+		
+		<input name="val" id="val" value="" class="number" placeholder="请输入数值"/>
+		
 		<script>
 			// index.html 中的 main.js
 //		var worker = new Worker('worker.js');
@@ -35,6 +38,39 @@
         	console.log("第"+i+"个红包："+money+"元，余额："+total+"元。")
         }
         console.log("第"+num+"个红包："+total+"元，余额："+0+"元。")
+        
+        
+        var numberKeydown = function(event){
+        	if(event.keyCode == 109 || event.keyCode == 189){
+        		if(this.value === '')
+        			return true;
+        	}
+        	if(!((event.keyCode >= 48 && event.keyCode < 58) || (event.keyCode >= 96 && event.keyCode < 106 || event.keyCode == 8))){
+        		return false;
+        	}
+        	return true;
+        }
+        
+        // 还需要添加小数点按钮输入匹配
+        var numberKeyup = function(event){
+        	if(event.keyCode == 109 || event.keyCode == 189){
+        		if(this.value === '')
+        			return true;
+        	}
+        	if(!((event.keyCode >= 48 && event.keyCode < 58) || (event.keyCode >= 96 && event.keyCode < 106 || event.keyCode == 8))){
+        		return false;
+        	}
+        	return true;
+        }
+        
+        var inputs = document.getElementsByClassName("number");
+        for(var i = 0, size = inputs.length; i < size; i ++) {
+        	if(inputs[i].localName == 'input'){
+        		inputs[i].onkeyup = numberKeyup;
+        		inputs[i].onkeydown = numberKeydown;
+        	}
+        }
+        
 		</script>
 	</body>
 </html>
