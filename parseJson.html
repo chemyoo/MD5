@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>parseJson</title>
+		<script type="text/javascript" src="importJS.js" ></script>
+	</head>
+	<body>
+		<script>
+			var str = "[{},[{'1\":[1,2,34,5]},{}]]";
+			var jsonStr = $.toJSONString(str);
+			console.log(JSON.parse(jsonStr));
+		</script>
+	</body>
+</html>
